@@ -2,6 +2,8 @@
 
 A safety system that uses camera and gyroscope sensors to detect stairs and warn users when they are at risk of injury while using their phone.
 
+**📱 Now available as a mobile app for Android phones!** See [Mobile Deployment](#mobile-deployment) below.
+
 ## Overview
 
 While using a phone when walking, users might not notice stairs and could be in a dangerous position due to their attention being focused on the phone screen. This can cause serious injuries. The Stair Detector uses a combination of:
@@ -12,21 +14,24 @@ While using a phone when walking, users might not notice stairs and could be in 
 
 ## Features
 
-- Real-time stair detection using edge detection and Hough line transforms
-- Phone orientation tracking to identify distracted walking
-- Intelligent warning system with cooldown to prevent alert fatigue
-- Multiple detection modes: camera-only, gyro-only, or combined
-- Configurable sensitivity and thresholds
-- Confidence-based warnings
+- ✅ Real-time stair detection using edge detection and Hough line transforms
+- ✅ Phone orientation tracking to identify distracted walking
+- ✅ Intelligent warning system with cooldown to prevent alert fatigue
+- ✅ Multiple detection modes: camera-only, gyro-only, or combined
+- ✅ Configurable sensitivity and thresholds
+- ✅ Confidence-based warnings
+- 📱 **Mobile app with camera access, gyroscope, and haptic feedback**
 
 ## Installation
 
-### Prerequisites
+### For Desktop/Development
+
+#### Prerequisites
 
 - Python 3.7 or higher
 - pip package manager
 
-### Setup
+#### Setup
 
 1. Clone the repository:
 ```bash
@@ -39,9 +44,27 @@ cd stair_detector
 pip install -r requirements.txt
 ```
 
+### For Mobile (Android)
+
+See the **[Mobile Deployment Guide (MOBILE.md)](MOBILE.md)** for complete instructions on building and installing the app on your Android phone.
+
+**Quick Summary:**
+```bash
+# Install buildozer
+pip install buildozer cython
+
+# Build Android APK
+buildozer android debug
+
+# Install on phone
+adb install bin/stairdetector-1.0.0-debug.apk
+```
+
 ## Usage
 
-### Quick Start
+### Desktop/Development Mode
+
+#### Quick Start
 
 Run the example script to see the system in action:
 
@@ -54,6 +77,29 @@ This will simulate various scenarios including:
 - Walking with phone in neutral position
 - Walking up stairs while distracted
 - Walking with phone in safe positions
+
+### Mobile App Mode
+
+Run the mobile app interface (works on desktop for testing):
+
+```bash
+python mobile_app.py
+```
+
+Or build and install on Android:
+
+```bash
+buildozer android debug
+adb install bin/stairdetector-1.0.0-debug.apk
+```
+
+**Mobile App Features:**
+- 📱 Real-time camera preview
+- 📊 Live detection status display
+- ⚠️ Large visual warnings
+- 📳 Vibration alerts when stairs detected
+- ⏸️ Pause/Resume detection
+- 🔄 Automatic gyroscope tracking
 
 ### Programmatic Usage
 
@@ -202,6 +248,53 @@ Warnings are issued when:
 - User appears distracted (phone tilted toward face)
 - Not in cooldown period (default 3 seconds)
 
+## Mobile Deployment
+
+The Stair Detector is available as a mobile application for Android phones. The mobile app provides:
+
+- **Real-time camera monitoring** using your phone's back camera
+- **Automatic gyroscope detection** from phone's accelerometer
+- **Visual warnings** with large, clear text alerts
+- **Haptic feedback** - phone vibrates when stairs are detected
+- **Pause/Resume control** to conserve battery when not needed
+
+### Building for Android
+
+Detailed instructions are in **[MOBILE.md](MOBILE.md)**. Quick steps:
+
+1. Install buildozer:
+```bash
+pip install buildozer cython
+```
+
+2. Build the APK:
+```bash
+buildozer android debug
+```
+
+3. Install on your phone:
+```bash
+adb install bin/stairdetector-1.0.0-debug.apk
+```
+
+### Running the Mobile App
+
+1. Open the app on your Android phone
+2. Grant Camera and other permissions when requested
+3. The app starts automatically detecting stairs
+4. Walk normally - you'll get warnings if stairs are detected while looking at your phone
+5. Use "Pause Detection" button to stop detection when not needed
+
+### Mobile App Screenshots
+
+The mobile app shows:
+- Camera preview at the top
+- Detection status (pitch angle, stairs detected)
+- Large orange warning messages
+- Pause/Resume button
+
+See [MOBILE.md](MOBILE.md) for screenshots and detailed usage instructions.
+
 ## Safety Considerations
 
 ⚠️ **Important**: This is a prototype/demonstration system. For production use:
@@ -217,12 +310,14 @@ Warnings are issued when:
 
 Potential improvements:
 - Machine learning-based stair detection
-- Integration with smartphone sensors
-- Haptic and audio warnings
-- Depth sensing for improved accuracy
+- ✅ ~~Integration with smartphone sensors~~ (Implemented!)
+- ✅ ~~Haptic and audio warnings~~ (Implemented!)
+- Depth sensing for improved accuracy (requires ToF sensors)
 - Multi-staircase pattern recognition
-- Night/low-light detection
+- Night/low-light detection with IR support
 - Real-time performance optimization
+- iOS version of the mobile app
+- Background detection mode with notifications
 
 ## License
 

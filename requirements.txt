@@ -1,3 +1,7 @@
 numpy>=1.21.0
 opencv-python>=4.5.0
 pillow>=8.0.0
+
+# Mobile app requirements
+kivy>=2.3.0
+plyer>=2.0.0
