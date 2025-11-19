@@ -1,0 +1,61 @@
+// !$*UTF8*$!
+{
+archiveVersion = 1;
+classes = {
+};
+objectVersion = 56;
+objects = {
+
+/* Begin PBXBuildFile section */
+StairDetectorApp.swift in Sources = {isa = PBXBuildFile; };
+ContentView.swift in Sources = {isa = PBXBuildFile; };
+StairDetectorViewModel.swift in Sources = {isa = PBXBuildFile; };
+CameraPreviewView.swift in Sources = {isa = PBXBuildFile; };
+StairDetector.swift in Sources = {isa = PBXBuildFile; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+StairDetector.app = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StairDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+StairDetectorApp.swift = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StairDetectorApp.swift; sourceTree = "<group>"; };
+ContentView.swift = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+StairDetectorViewModel.swift = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StairDetectorViewModel.swift; sourceTree = "<group>"; };
+CameraPreviewView.swift = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+StairDetector.swift = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StairDetector.swift; sourceTree = "<group>"; };
+Info.plist = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+Main = {
+isa = PBXGroup;
+children = (
+StairDetector,
+Products,
+);
+sourceTree = "<group>";
+};
+StairDetector = {
+isa = PBXGroup;
+children = (
+StairDetectorApp.swift,
+ContentView.swift,
+StairDetectorViewModel.swift,
+CameraPreviewView.swift,
+StairDetector.swift,
+Info.plist,
+);
+path = StairDetector;
+sourceTree = "<group>";
+};
+Products = {
+isa = PBXGroup;
+children = (
+StairDetector.app,
+);
+name = Products;
+sourceTree = "<group>";
+};
+/* End PBXGroup section */
+
+};
+rootObject = PBXProject;
+}
