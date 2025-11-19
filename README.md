@@ -2,7 +2,7 @@
 
 A safety system that uses camera and gyroscope sensors to detect stairs and warn users when they are at risk of injury while using their phone.
 
-**📱 Now available as a mobile app for Android phones!** See [Mobile Deployment](#mobile-deployment) below.
+**📱 Now available as mobile apps for both Android and iOS!** See [Mobile Deployment](#mobile-deployment) below.
 
 ## Overview
 
@@ -20,7 +20,8 @@ While using a phone when walking, users might not notice stairs and could be in 
 - ✅ Multiple detection modes: camera-only, gyro-only, or combined
 - ✅ Configurable sensitivity and thresholds
 - ✅ Confidence-based warnings
-- 📱 **Mobile app with camera access, gyroscope, and haptic feedback**
+- 📱 **Android app** - Python/Kivy with camera access, gyroscope, and haptic feedback
+- 🍎 **iOS app** - Native Swift/SwiftUI with Vision framework and CoreMotion
 
 ## Installation
 
@@ -58,6 +59,20 @@ buildozer android debug
 
 # Install on phone
 adb install bin/stairdetector-1.0.0-debug.apk
+```
+
+### For iOS (iPhone)
+
+See the **[iOS App Guide (ios/README.md)](ios/README.md)** for complete instructions on building and installing the native iOS app.
+
+**Quick Summary:**
+```bash
+# Open in Xcode
+cd ios
+open StairDetector.xcodeproj
+
+# Build and run on your iPhone from Xcode
+# (Select your device and click Run)
 ```
 
 ## Usage
@@ -250,7 +265,11 @@ Warnings are issued when:
 
 ## Mobile Deployment
 
-The Stair Detector is available as a mobile application for Android phones. The mobile app provides:
+The Stair Detector is available as native mobile applications for both Android and iOS phones.
+
+### 🤖 Android App (Python/Kivy)
+
+The Android app provides:
 
 - **Real-time camera monitoring** using your phone's back camera
 - **Automatic gyroscope detection** from phone's accelerometer
@@ -258,7 +277,7 @@ The Stair Detector is available as a mobile application for Android phones. The 
 - **Haptic feedback** - phone vibrates when stairs are detected
 - **Pause/Resume control** to conserve battery when not needed
 
-### Building for Android
+#### Building for Android
 
 Detailed instructions are in **[MOBILE.md](MOBILE.md)**. Quick steps:
 
@@ -277,15 +296,69 @@ buildozer android debug
 adb install bin/stairdetector-1.0.0-debug.apk
 ```
 
-### Running the Mobile App
+### 🍎 iOS App (Native Swift)
 
+The iOS app provides:
+
+- **Native SwiftUI interface** for smooth performance
+- **Vision framework** for advanced stair detection
+- **CoreMotion integration** for precise gyroscope tracking
+- **Haptic feedback** using UINotificationFeedbackGenerator
+- **Real-time camera preview** with AVFoundation
+- **Optimized battery usage** with efficient frame processing
+
+#### Building for iOS
+
+Detailed instructions are in **[ios/README.md](ios/README.md)**. Quick steps:
+
+1. Open in Xcode:
+```bash
+cd ios
+open StairDetector.xcodeproj
+```
+
+2. Configure signing:
+   - Select your development team
+   - Choose a unique Bundle Identifier
+
+3. Build and run:
+   - Connect your iPhone
+   - Click Run (▶️) in Xcode
+
+**Requirements:**
+- macOS with Xcode 14.0+
+- iPhone with iOS 15.0+
+- Apple Developer account (free tier works for development)
+
+### Platform Comparison
+
+| Feature | Android (Kivy) | iOS (Swift) |
+|---------|---------------|-------------|
+| Language | Python | Swift |
+| UI Framework | Kivy | SwiftUI |
+| Computer Vision | OpenCV | Vision Framework |
+| Motion Sensors | Plyer | CoreMotion |
+| Min Version | Android 5.0 | iOS 15.0 |
+| Build Tool | Buildozer | Xcode |
+| App Size | ~50-80 MB | ~5-10 MB |
+
+### Running the Mobile Apps
+
+**Android:**
 1. Open the app on your Android phone
 2. Grant Camera and other permissions when requested
 3. The app starts automatically detecting stairs
 4. Walk normally - you'll get warnings if stairs are detected while looking at your phone
 5. Use "Pause Detection" button to stop detection when not needed
 
-### Mobile App Screenshots
+**iOS:**
+1. Open the app on your iPhone
+2. Grant Camera and Motion permissions when prompted
+3. The app starts automatically with live camera preview
+4. Walk around - you'll receive visual and haptic warnings
+5. Tap "Pause Detection" to conserve battery when not needed
+
+### Mobile App Interface
 
 The mobile app shows:
 - Camera preview at the top
